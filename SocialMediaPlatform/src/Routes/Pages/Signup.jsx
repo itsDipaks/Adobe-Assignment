@@ -1,12 +1,13 @@
 import React from 'react'
 
-const PostList = () => {
-
+const Signup = () => {
   return (
     <div>
+        
+        
 
     </div>
   )
 }
 
-export default PostList
+export default Signup
