@@ -1,10 +1,10 @@
 import React from 'react'
-import Table from '../../components/Table'
+import UserTable from '../../components/UserTable'
 
 const UserList = () => {
   return (
     <div>
-      <Table/>
+      <UserTable/>
     </div>
   )
 }

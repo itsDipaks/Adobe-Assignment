@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = () => {
+const UserTable = () => {
   return (
     <div>
       <section class="text-gray-600 body-font">
@@ -55,4 +55,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default UserTable;
