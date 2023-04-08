@@ -1,18 +1,20 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import AddUser from './Pages/AddUser'
+import AddPost from './Pages/AddPost'
 import UserList from './Pages/UserList'
 import PostList from './Pages/PostList'
-import CreatePost from './Pages/CreatePost'
-import CreateUser from './Pages/CreateUser'
+import Home from './Pages/Home'
 
 const CombineRoutes = () => {
   return (
     <div>
         <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/adduser' element={<AddUser/>}/>
+            <Route path='/addpost' element={<AddPost/>}/>
             <Route path='/userlist' element={<UserList/>}/>
             <Route path='/postlist' element={<PostList/>}/>
-            <Route path='/createpost' element={<CreatePost/>}/>
-            <Route path='/createuser' element={<CreateUser/>}/>
         </Routes>
     </div>
   )

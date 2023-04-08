@@ -1,8 +1,11 @@
 import React from 'react'
+import Table from '../../components/Table'
 
 const UserList = () => {
   return (
-    <div>UserList</div>
+    <div>
+      <Table/>
+    </div>
   )
 }
 

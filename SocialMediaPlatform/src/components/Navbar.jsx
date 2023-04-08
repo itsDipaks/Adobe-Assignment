@@ -4,7 +4,10 @@ import {GiWrappingStar} from "react-icons/gi";
 const Navbar = () => {
   let Routes = [
     {id: 1, Name: "Home", Link: "/"},
-    {id: 1, Name: "Posta", Link: "/"},
+    {id: 2, Name: "AddUser", Link: "/adduser"},
+    {id: 3, Name: "AddPost", Link: "/addpost"},
+    {id: 4, Name: "UserList", Link: "/userlist"},
+    {id: 4, Name: "PostList", Link: "/postlist"},
   ];
   return (
     <>
@@ -18,7 +21,7 @@ const Navbar = () => {
             {Routes.map((el) => (
               <Link to={el.Link}>
                 {" "}
-                <h3 className="mr-4">{el.Name} </h3>
+                <h3 className="mr-14">{el.Name} </h3>
               </Link>
             ))}
           </nav>
