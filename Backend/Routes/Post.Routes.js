@@ -5,7 +5,7 @@ const PostRouter = Router();
 
 PostRouter.post("/posts", (req, res) => {
   try {
-    const Posts = PostModel.find();
+    const Posts = new PostModel.find();
     res.status(200).send({msg: "Posts Data", posts: Posts});
   } catch (err) {
     res.status(400).send({msg: "Error Data Not Found", Err: err});
