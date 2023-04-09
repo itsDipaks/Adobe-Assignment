@@ -7,11 +7,12 @@ const Navbar = () => {
     {id: 2, Name: "AddUser", Link: "/adduser"},
     {id: 3, Name: "AddPost", Link: "/addpost"},
     {id: 4, Name: "UserList", Link: "/userlist"},
-    {id: 4, Name: "PostList", Link: "/postlist"},
+    {id: 5, Name: "PostList", Link: "/postlist"},
+    {id: 6, Name: "Analytics", Link: "/analytics"},
   ];
   return (
     <>
-      <header className="text-gray-600 body-font ">
+      <header className="text-gray-600 body-font border-b-2">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <GiWrappingStar style={{width: "50px", height: "50px"}} />

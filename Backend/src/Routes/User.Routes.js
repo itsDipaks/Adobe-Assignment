@@ -84,10 +84,6 @@ UsersRouter.delete("/:id", async(req, res) => {
   }
 });
 
-//-------- ========Anyaletics============ --------
 
-UsersRouter.get("/analytics/users", (req, res) => {});
-
-UsersRouter.get("/analytics/users/top-active", (req, res) => {});
 
 module.exports = {UsersRouter};

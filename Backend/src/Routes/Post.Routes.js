@@ -75,15 +75,17 @@ PostRouter.get("/", async(req, res) => {
 //   }
 // });
 
-// PostRouter.delete("/:id", (req, res) => {
-//   let {id} = req.params;
-//   try {
-//     const DeletedPost = PostModel.findByIdAndDelete({_id: id});
-//     res.status(200).send({msg: "Post Deleted", DeletedPost: DeletedPost});
-//   } catch (err) {
-//     res.status(400).send({msg: "Error Post Not Found", Err: err});
-//   }
-// });
+PostRouter.delete("/:id", async(req, res) => {
+  let {id} = req.params;
+  try {
+    const DeletedPost =await PostModel.findByIdAndDelete({_id: id});
+    res.status(200).send({msg: "Post Deleted", DeletedPost: DeletedPost});
+  } catch (err) {
+    res.status(400).send({msg: "Error Post Not Found", Err: err});
+  }
+});
+ 
+
 
 PostRouter.put("/:id/like",async (req, res) => {
   let {id} = req.params;
@@ -110,23 +112,5 @@ await UnlikePost.save()
     res.status(400).send({msg: "Error Post Not Found", Data: err});
   }
 });
-
-// PostRouter.post("/:id/unlike", (req, res) => {
-//   let {id} = req.params;
-//   try {
-//     const UnlikePost = PostModel.findOneAndUpdate({_id: id});
-//     res
-//       .status(200)
-//       .send({msg: "Post Like Sucessfully", UnlikePost: UnlikePost});
-//   } catch (err) {
-//     res.status(400).send({msg: "Error Post Not Found", Err: err});
-//   }
-// });
-
-// // ======== Post Anyaletics ===========
-
-// PostRouter.get("/analytics/posts", (req, res) => {});
-
-// PostRouter.get("/analytics/posts/top-liked", (req, res) => {});
 
 module.exports = {PostRouter};

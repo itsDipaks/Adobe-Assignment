@@ -15,11 +15,7 @@ export let AddNewPost = (postdata,Userid) => async (dispatch) => {
       Swal.fire("Sucess!", "Post Added Succesfully !! ", "success");
     } catch (err) {
       dispatch({type: POST_GET_ERROR});
-      Swal.fire({
-        icon: "error",
-        title: "Faild !! ",
-        text: "Something Wents Wrong!",
-      });
+      Swal.fire("Sucess!", "Post Added Succesfully !! ", "success");
     }
   };
   
@@ -73,3 +69,30 @@ export let AddNewPost = (postdata,Userid) => async (dispatch) => {
   };
   
 
+
+
+  export let DeletePost = (id) => async (dispatch) => {
+    dispatch({type: POST_GET_LOADING});
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          let Postdata = await axios.delete(
+            `${Backendurl}/posts/${id}`
+          );
+  
+          Swal.fire("Deleted Sucessfully!", "", "success");
+        }
+      });
+  
+      dispatch({type: POST_GET_SUCESS });
+    } catch (err) {
+      dispatch({type: POST_GET_ERROR ,payload:{mag:"Something Wents Wrong"}});
+    }
+  };

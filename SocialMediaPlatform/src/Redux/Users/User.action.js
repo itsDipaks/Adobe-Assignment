@@ -87,3 +87,25 @@ export let AddnewUser = (formdata) => async (dispatch) => {
     }
   };
 
+
+
+
+  // =============== Anylyetics ==============
+
+
+
+  export let UsersAnyalyetics = () => async (dispatch) => {
+    dispatch({type: USER_GET_LOADING});
+  
+    try {
+      let AllUsersdata = await axios.get(`${Backendurl}/analytics/users`);
+      let usersdata=AllUsersdata.data.data
+      console.log(usersdata.length)
+      dispatch({type: USER_GET_SUCESS, payload: {data:usersdata}});
+
+    }  catch (err) {
+      let errormsg=err.response.data.msg
+      dispatch({type: USER_GET_ERROR,payload:{msg:errormsg}});
+    }
+  };
+  

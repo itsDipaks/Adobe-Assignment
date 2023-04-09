@@ -8,7 +8,7 @@ const PostList = () => {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(GetAllPosts());
+    getPostListdata()
   }, []);
 
   let getPostListdata = () => {
@@ -25,7 +25,7 @@ const PostList = () => {
             </h1>
       <div className="flex  w-11/12 m-auto justify-evenly flex-wrap ">
         {PostData?.map((el) => (
-          <PostCard data={el && el} />
+          <PostCard data={el && el} getPostListdata={getPostListdata} />
         ))}
       </div>
     </>

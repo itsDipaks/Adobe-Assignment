@@ -1,7 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { DeletePost } from "../Redux/Posts/Post.action";
 
-const PostCard = ({data}) => {
+const PostCard = ({data,getPostListdata}) => {
+let dispatch=useDispatch()
 
+  let deletepost=()=>{
+    dispatch(DeletePost(data._id))
+    setTimeout(()=>{
+      getPostListdata()
+    },2000)
+  }
   return (
     <div>
       <section className="text-gray-600 bg-gray-100 body-font overflow-hidden w-full rounded-4 border-gray-500">
@@ -19,7 +28,7 @@ const PostCard = ({data}) => {
                   <button className="inline-flex items-center bg-green-300 border-0 py-1 px-3 focus:outline-none hover:bg-green-500 rounded hover:text-white text-base mt-4 md:mt-0">
                     Edit
                   </button>
-                  <button className="inline-flex items-center bg-red-300 border-0 py-1 px-3 focus:outline-none hover:bg-red-500 rounded hover:text-white text-base mt-4 md:mt-0">
+                  <button onClick={deletepost} className="inline-flex items-center bg-red-300 border-0 py-1 px-3 focus:outline-none hover:bg-red-500 rounded hover:text-white text-base mt-4 md:mt-0">
                     Delete
                   </button>
                 </div>

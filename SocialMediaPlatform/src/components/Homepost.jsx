@@ -14,17 +14,16 @@ const Homepost = ({el, getallpost}) => {
   let Likepost = () => {
     if (!islike) {
       dispatch(LikePost(el._id));
-
+      setlike(true);
       setTimeout(() => {
         getallpost();
-        setlike(true);
+      
       }, 2000);
     } else {
       dispatch(DislikePost(el._id));
-
+      setlike(false);
       setTimeout(() => {
         getallpost();
-        setlike(false);
       }, 2000);
     }
   };

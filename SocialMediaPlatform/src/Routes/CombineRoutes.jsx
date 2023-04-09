@@ -6,6 +6,7 @@ import UserList from './Pages/UserList'
 import PostList from './Pages/PostList'
 import Home from './Pages/Home'
 import PrivateRoutes from './PrivateRoutes'
+import AnylyeticsPage from './Pages/AnylyeticsPage'
 
 const CombineRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const CombineRoutes = () => {
             <Route path='/addpost' element={<PrivateRoutes><AddPost/></PrivateRoutes>}/>
             <Route path='/userlist' element={<PrivateRoutes><UserList/></PrivateRoutes>}/>
             <Route path='/postlist' element={<PrivateRoutes><PostList/></PrivateRoutes>}/>
+            <Route path='/analytics' element={<PrivateRoutes><AnylyeticsPage/></PrivateRoutes>}/>
         </Routes>
     </div>
   )

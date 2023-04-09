@@ -4,7 +4,7 @@ let initialstate = {
   loading: false,
   error: false,
   msg: null,
-  data:[]
+  data:[],
 };
 
 export const UserReducer = (state = initialstate, {type, payload}) => {
@@ -24,7 +24,7 @@ export const UserReducer = (state = initialstate, {type, payload}) => {
         ...state,
         loading: false,
         data:payload?.data,
-        msg:payload?.msg
+        msg:payload?.msg,
       };
     }
     case USER_GET_ERROR: {
