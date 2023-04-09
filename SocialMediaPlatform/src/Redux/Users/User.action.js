@@ -10,7 +10,6 @@ export let AddnewUser = (formdata) => async (dispatch) => {
     try {
       let User = await axios.post(`${Backendurl}/users`, formdata);
       let userdata=User.data.data
-      console.log(User)
       dispatch({type: USER_GET_SUCESS ,payload:{data:userdata,msg:User.data.msg}});
 
     } catch (err) {
@@ -29,7 +28,6 @@ export let AddnewUser = (formdata) => async (dispatch) => {
     try {
       let AllUsersdata = await axios.get(`${Backendurl}/users`);
       let usersdata=AllUsersdata.data.data
-      console.log(usersdata)
       dispatch({type: USER_GET_SUCESS, payload: {data:usersdata}});
 
     }  catch (err) {
@@ -99,6 +97,22 @@ export let AddnewUser = (formdata) => async (dispatch) => {
   
     try {
       let AllUsersdata = await axios.get(`${Backendurl}/analytics/users`);
+      let usersdata=AllUsersdata.data.data
+      console.log(usersdata.length)
+      dispatch({type: USER_GET_SUCESS, payload: {data:usersdata}});
+
+    }  catch (err) {
+      let errormsg=err.response.data.msg
+      dispatch({type: USER_GET_ERROR,payload:{msg:errormsg}});
+    }
+  };
+  
+
+  export let ActiveUsersAnyalyetics = () => async (dispatch) => {
+    dispatch({type: USER_GET_LOADING});
+  
+    try {
+      let AllUsersdata = await axios.get(`${Backendurl}/analytics/users/top-active`);
       let usersdata=AllUsersdata.data.data
       console.log(usersdata.length)
       dispatch({type: USER_GET_SUCESS, payload: {data:usersdata}});

@@ -1,5 +1,6 @@
 let {Router} = require("express");
-const { PostModel } = require("../model/Post.model");
+const {PostModel} = require("../model/Post.model");
+const {UserModel} = require("../model/User.model");
 const PostRouter = Router();
 
 PostRouter.post("/", async (req, res) => {
@@ -10,47 +11,25 @@ PostRouter.post("/", async (req, res) => {
       user_id: Userid,
       content: postdata,
     });
-
     await Posts.save();
+    const userpostcount = await UserModel.findById({_id: Userid});
+    userpostcount.postcount++;
+    await userpostcount.save();
     res.status(200).send({msg: "Post Added Sucessfully"});
   } catch (err) {
     res.status(400).send({msg: "Error  Not Found", Err: err});
   }
 });
 
-PostRouter.get("/", async(req, res) => {
+PostRouter.get("/", async (req, res) => {
   try {
-    const Post = await PostModel.aggregate([
-      {
-        '$lookup': {
-          'from': 'users', 
-          'localField': '_id:objectId', 
-          'foreignField': 'user_id', 
-          'as': 'usersdata'
-        }
-      }, {
-        '$unwind': {
-          'path': '$usersdata'
-        }
-      }, {
-        '$project': {
-          'content': true, 
-          'likes': true, 
-          '_id': true, 
-          'user_id': true, 
-          'created_at': true, 
-          'updated_at': true, 
-          'usersdata': true
-        }
-      }
-    ]);
+    const Post = await PostModel.find();
+
     res.status(200).send({msg: "Post Data", data: Post});
   } catch (err) {
     res.status(400).send({msg: "Error Post Data Not Found", Err: err});
   }
 });
-
-
 
 // PostRouter.get("/:id", (req, res) => {
 //   let {id} = req.params;
@@ -75,38 +54,35 @@ PostRouter.get("/", async(req, res) => {
 //   }
 // });
 
-PostRouter.delete("/:id", async(req, res) => {
+PostRouter.delete("/:id", async (req, res) => {
   let {id} = req.params;
   try {
-    const DeletedPost =await PostModel.findByIdAndDelete({_id: id});
+    const DeletedPost = await PostModel.findByIdAndDelete({_id: id});
     res.status(200).send({msg: "Post Deleted", DeletedPost: DeletedPost});
   } catch (err) {
     res.status(400).send({msg: "Error Post Not Found", Err: err});
   }
 });
- 
 
-
-PostRouter.put("/:id/like",async (req, res) => {
+PostRouter.put("/:id/like", async (req, res) => {
   let {id} = req.params;
-  console.log(req.params)
+  console.log(req.params);
   try {
-    const LikedPost = await PostModel.findById({_id:id});
-    LikedPost.likes++
-await LikedPost.save()
+    const LikedPost = await PostModel.findById({_id: id});
+    LikedPost.likes++;
+    await LikedPost.save();
     res.status(200).send({msg: "Post Like Sucessfully", data: LikedPost});
   } catch (err) {
     res.status(400).send({msg: "Error Post Not Found", Data: err});
   }
 });
 
-
-PostRouter.put("/:id/unlike",async (req, res) => {
+PostRouter.put("/:id/unlike", async (req, res) => {
   let {id} = req.params;
   try {
-    const UnlikePost = await PostModel.findById({_id:id});
-    UnlikePost.likes--
-await UnlikePost.save()
+    const UnlikePost = await PostModel.findById({_id: id});
+    UnlikePost.likes--;
+    await UnlikePost.save();
     res.status(200).send({msg: "Post Like Sucessfully", data: UnlikePost});
   } catch (err) {
     res.status(400).send({msg: "Error Post Not Found", Data: err});

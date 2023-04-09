@@ -71,7 +71,7 @@ export let AddNewPost = (postdata,Userid) => async (dispatch) => {
 
 
 
-  export let DeletePost = (id) => async (dispatch) => {
+  export let DeletePost = (id,Userid) => async (dispatch) => {
     dispatch({type: POST_GET_LOADING});
     try {
       Swal.fire({
@@ -94,5 +94,40 @@ export let AddNewPost = (postdata,Userid) => async (dispatch) => {
       dispatch({type: POST_GET_SUCESS });
     } catch (err) {
       dispatch({type: POST_GET_ERROR ,payload:{mag:"Something Wents Wrong"}});
+    }
+  };
+
+
+
+
+  export let PostAnyalyeticsCount = () => async (dispatch) => {
+    dispatch({type: POST_GET_LOADING});
+  
+    try {
+      let Allposts = await axios.get(`${Backendurl}/analytics/posts`);
+      let AllPosts=Allposts.data.data
+      console.log(AllPosts)
+      dispatch({type: POST_GET_SUCESS, payload: {Postdata:AllPosts}});
+
+    }  catch (err) {
+      let errormsg=err.response.data.msg
+      dispatch({type: POST_GET_ERROR,payload:{msg:errormsg}});
+    }
+  };
+  
+
+  export let TopLikesPostAnyalyetics = () => async (dispatch) => {
+    dispatch({type: POST_GET_LOADING});
+  
+    try {
+      let AllLikedpost = await axios.get(`${Backendurl}/analytics/posts/top-liked`);
+      let Mostlikedpost=AllLikedpost.data.data
+
+      console.log(AllLikedpost)
+      dispatch({type: POST_GET_SUCESS, payload: {Postdata:Mostlikedpost}});
+
+    }  catch (err) {
+      let errormsg=err.response.data.msg
+      dispatch({type: POST_GET_ERROR,payload:{msg:errormsg}});
     }
   };

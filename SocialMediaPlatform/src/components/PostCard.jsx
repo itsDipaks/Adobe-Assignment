@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { DeletePost } from "../Redux/Posts/Post.action";
+import { GetlocalStorageData } from "../assets/Localstorage";
 
 const PostCard = ({data,getPostListdata}) => {
 let dispatch=useDispatch()
-
+let Userid= GetlocalStorageData("Userid");
   let deletepost=()=>{
-    dispatch(DeletePost(data._id))
+    dispatch(DeletePost(data._id,Userid))
     setTimeout(()=>{
       getPostListdata()
     },2000)
