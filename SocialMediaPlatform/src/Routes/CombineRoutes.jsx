@@ -5,6 +5,7 @@ import AddPost from './Pages/AddPost'
 import UserList from './Pages/UserList'
 import PostList from './Pages/PostList'
 import Home from './Pages/Home'
+import PrivateRoutes from './PrivateRoutes'
 
 const CombineRoutes = () => {
   return (
@@ -12,9 +13,9 @@ const CombineRoutes = () => {
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/adduser' element={<AddUser/>}/>
-            <Route path='/addpost' element={<AddPost/>}/>
-            <Route path='/userlist' element={<UserList/>}/>
-            <Route path='/postlist' element={<PostList/>}/>
+            <Route path='/addpost' element={<PrivateRoutes><AddPost/></PrivateRoutes>}/>
+            <Route path='/userlist' element={<PrivateRoutes><UserList/></PrivateRoutes>}/>
+            <Route path='/postlist' element={<PrivateRoutes><PostList/></PrivateRoutes>}/>
         </Routes>
     </div>
   )

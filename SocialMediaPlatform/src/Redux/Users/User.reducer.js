@@ -3,11 +3,8 @@ import { USER_GET_LOADING,USER_GET_SUCESS,USER_GET_ERROR } from "./User.types";
 let initialstate = {
   loading: false,
   error: false,
-  token: null,
-  isadmin: false,
   msg: null,
-  name:null,
-  email:null
+  data:[]
 };
 
 export const UserReducer = (state = initialstate, {type, payload}) => {
@@ -19,17 +16,15 @@ export const UserReducer = (state = initialstate, {type, payload}) => {
       };
     }
     case USER_GET_SUCESS: {
-      if (payload.data.token) {
-        localStorage.setItem("token", JSON.stringify(payload.data.token));
+      if (payload.data._id) {
+        localStorage.setItem("Userid", JSON.stringify(payload.data._id));
       }
-      console.log(payload.data);
+      console.log(payload)
       return {
         ...state,
         loading: false,
-        token: payload.data.token,
-        isadmin: payload.data.isAdmin,
-        name: payload.data.userinfo.name,
-        email: payload.data.userinfo.email
+        data:payload?.data,
+        msg:payload?.msg
       };
     }
     case USER_GET_ERROR: {

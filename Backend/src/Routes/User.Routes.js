@@ -1,6 +1,5 @@
 let {Router} = require("express");
-const { UserModel } = require("./Models/User.model");
-
+const { UserModel } = require("../model/User.model");
 const UsersRouter = Router();
 
 UsersRouter.post("/", async (req, res) => {
@@ -39,13 +38,25 @@ UsersRouter.post("/", async (req, res) => {
 
 
 
-UsersRouter.get("/:id", (req, res) => {
-  let {id} = req.params;
+UsersRouter.get("/", async(req, res) => {
   try {
-    const User = UserModel.findById({_id: id});
+    const User = await UserModel.find();
+    res.status(200).send({msg: "User Data", data: User});
+  } catch (err) {
+    res.status(400).send({msg: "Error Users Not Found"});
+  }
+});
+
+
+
+UsersRouter.get("/:id", async(req, res) => {
+  let {id} = req.params;
+  console.log(params)
+  try {
+    const User =await UserModel.findById({_id: id});
     res.status(200).send({msg: "User Data", User: User});
   } catch (err) {
-    res.status(400).send({msg: "Error User Not Found", Err: err});
+    res.status(400).send({msg: "Error Users Not Found"});
   }
 });
 
@@ -62,10 +73,11 @@ UsersRouter.put("/:id", (req, res) => {
   }
 });
 
-UsersRouter.delete("/:id", (req, res) => {
+UsersRouter.delete("/:id", async(req, res) => {
   let {id} = req.params;
+  console.log(id)
   try {
-    const DeletedUser = UserModel.findByIdAndDelete({_id: id});
+    const DeletedUser = await UserModel.findByIdAndDelete({_id:id});
     res.status(200).send({msg: "Post Deleted", DeletedUser: DeletedUser});
   } catch (err) {
     res.status(400).send({msg: "Error User Not Found", Err: err});

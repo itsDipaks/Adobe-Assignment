@@ -7,5 +7,7 @@ const PostSchema = new mongoose.Schema({
   updated_at: {type: Date, default: Date.now},
   likes: {type: Number, default: 0},
 });
+
 const PostModel = mongoose.model("Post", PostSchema);
 module.exports = {PostModel};
+
