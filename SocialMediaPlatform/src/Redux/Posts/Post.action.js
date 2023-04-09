@@ -43,4 +43,33 @@ export let AddNewPost = (postdata,Userid) => async (dispatch) => {
     }
   };
   
+  export let LikePost= (postid) => async (dispatch) => {
+    dispatch({type: POST_GET_LOADING});
+  
+    try {
+      let likes = await axios.put(`${Backendurl}/posts/${postid}/like`);
+      dispatch({
+        type: POST_GET_SUCESS,
+      });
+  
+    } catch (err) {
+      dispatch({type: POST_GET_ERROR});
+    }
+  };
+  
+
+  export let DislikePost= (postid) => async (dispatch) => {
+    dispatch({type: POST_GET_LOADING});
+  
+    try {
+      let Unlike = await axios.put(`${Backendurl}/posts/${postid}/unlike`);
+      dispatch({
+        type: POST_GET_SUCESS,
+      });
+  
+    } catch (err) {
+      dispatch({type: POST_GET_ERROR});
+    }
+  };
+  
 

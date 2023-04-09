@@ -85,15 +85,31 @@ PostRouter.get("/", async(req, res) => {
 //   }
 // });
 
-// PostRouter.post("/:id/like", (req, res) => {
-//   let {id} = req.params;
-//   try {
-//     const LikedPost = PostModel.findOneAndUpdate({_id: id});
-//     res.status(200).send({msg: "Post Like Sucessfully", LikedPost: LikedPost});
-//   } catch (err) {
-//     res.status(400).send({msg: "Error Post Not Found", Err: err});
-//   }
-// });
+PostRouter.put("/:id/like",async (req, res) => {
+  let {id} = req.params;
+  console.log(req.params)
+  try {
+    const LikedPost = await PostModel.findById({_id:id});
+    LikedPost.likes++
+await LikedPost.save()
+    res.status(200).send({msg: "Post Like Sucessfully", data: LikedPost});
+  } catch (err) {
+    res.status(400).send({msg: "Error Post Not Found", Data: err});
+  }
+});
+
+
+PostRouter.put("/:id/unlike",async (req, res) => {
+  let {id} = req.params;
+  try {
+    const UnlikePost = await PostModel.findById({_id:id});
+    UnlikePost.likes--
+await UnlikePost.save()
+    res.status(200).send({msg: "Post Like Sucessfully", data: UnlikePost});
+  } catch (err) {
+    res.status(400).send({msg: "Error Post Not Found", Data: err});
+  }
+});
 
 // PostRouter.post("/:id/unlike", (req, res) => {
 //   let {id} = req.params;

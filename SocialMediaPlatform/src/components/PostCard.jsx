@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const PostCard = ({data}) => {
-  
+
   return (
     <div>
       <section className="text-gray-600 bg-gray-100 body-font overflow-hidden w-full rounded-4 border-gray-500">
