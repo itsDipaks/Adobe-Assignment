@@ -18,6 +18,40 @@ PostRouter.post("/", async (req, res) => {
   }
 });
 
+PostRouter.get("/", async(req, res) => {
+  try {
+    const Post = await PostModel.aggregate([
+      {
+        '$lookup': {
+          'from': 'users', 
+          'localField': '_id:objectId', 
+          'foreignField': 'user_id', 
+          'as': 'usersdata'
+        }
+      }, {
+        '$unwind': {
+          'path': '$usersdata'
+        }
+      }, {
+        '$project': {
+          'content': true, 
+          'likes': true, 
+          '_id': true, 
+          'user_id': true, 
+          'created_at': true, 
+          'updated_at': true, 
+          'usersdata': true
+        }
+      }
+    ]);
+    res.status(200).send({msg: "Post Data", data: Post});
+  } catch (err) {
+    res.status(400).send({msg: "Error Post Data Not Found", Err: err});
+  }
+});
+
+
+
 // PostRouter.get("/:id", (req, res) => {
 //   let {id} = req.params;
 //   try {

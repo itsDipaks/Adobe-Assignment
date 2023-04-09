@@ -15,6 +15,7 @@ const UserList = () => {
 
   return (
     <div>
+
       <UserTable getusersdata={getusersdata} />
     </div>
   );

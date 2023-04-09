@@ -40,6 +40,26 @@ export let AddnewUser = (formdata) => async (dispatch) => {
   
 
 
+  export let SingleUser = (userid) => async (dispatch) => {
+    dispatch({type: USER_GET_LOADING});
+  
+    try {
+      let SingleUserData = await axios.get(`${Backendurl}/users/${userid}`);
+      let userdata=SingleUserData.data.data
+      console.log(userdata)
+      dispatch({type: USER_GET_SUCESS, payload: {data:userdata}});
+
+    }  catch (err) {
+      let errormsg=err.response.data.msg
+      dispatch({type: USER_GET_ERROR,payload:{msg:errormsg}});
+    }
+  };
+  
+
+
+
+
+
 
   export let DeleteUser = (id) => async (dispatch) => {
     dispatch({type: USER_GET_LOADING});

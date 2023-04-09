@@ -23,3 +23,24 @@ export let AddNewPost = (postdata,Userid) => async (dispatch) => {
     }
   };
   
+
+
+
+  export let GetAllPosts= () => async (dispatch) => {
+    dispatch({type: POST_GET_LOADING});
+  
+    try {
+      let AllpostData = await axios.get(`${Backendurl}/posts`);
+      let Allpost=AllpostData.data.data
+      console.log(Allpost)
+      dispatch({
+        type: POST_GET_SUCESS,
+        payload:{Postdata:Allpost}
+      });
+  
+    } catch (err) {
+      dispatch({type: POST_GET_ERROR});
+    }
+  };
+  
+

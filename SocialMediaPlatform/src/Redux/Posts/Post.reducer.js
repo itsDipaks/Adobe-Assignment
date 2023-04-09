@@ -21,7 +21,7 @@ export const PostReducer = (state = initialstate, {type, payload}) => {
       return {
         ...state,
         loading: false,
-        FeedsData:payload
+        PostData:payload.Postdata
       };
     }
     case POST_GET_ERROR: {

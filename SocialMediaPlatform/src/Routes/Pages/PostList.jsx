@@ -1,16 +1,35 @@
-import React from 'react'
-import PostCard from '../../components/PostCard'
+import React, {useEffect} from "react";
+import PostCard from "../../components/PostCard";
+import {useDispatch, useSelector} from "react-redux";
+import {GetAllPosts} from "../../Redux/Posts/Post.action";
+import {SingleUser} from "../../Redux/Users/User.action";
 
 const PostList = () => {
+  let dispatch = useDispatch();
 
-  
+  useEffect(() => {
+    dispatch(GetAllPosts());
+  }, []);
+
+  let getPostListdata = () => {
+    dispatch(GetAllPosts());
+  };
+  let {PostData} = useSelector((store) => store.post);
+
+  console.log(PostData);
   return (
-    <div>
+    <>
 
+<h1 class="sm:text-4xl text-3xl text-center font-medium  mb-14 title-font mb-2 text-gray-900">
+            Post List
+            </h1>
+      <div className="flex  w-11/12 m-auto justify-evenly flex-wrap ">
+        {PostData?.map((el) => (
+          <PostCard data={el && el} />
+        ))}
+      </div>
+    </>
+  );
+};
 
-<PostCard/>
-    </div>
-  )
-}
-
-export default PostList
+export default PostList;
