@@ -1,16 +1,52 @@
 import React from "react";
-import { useState } from "react";
-
+import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {AddnewUser} from "../../Redux/Users/User.action";
 const AddUser = () => {
-const [userform,setuserform]=useState({})
+  let [name, setname] = useState("");
+  let [email, setimail] = useState("");
+  let [bio, setbio] = useState("");
+  let [error, seterror] = useState("");
+  let dispatch = useDispatch();
 
-const handelduserinputs=()=>{
 
-}
-  const submituserdata=()=>{
+  let {loading}=useSelector((store)=>store.user)
+  let nameinput = (e) => {
+    let data = e.target.value;
+    if (data.length <= 50) {
+      setname(e.target.value);
+    } else {
+      seterror("enter correct");
+    }
+  };
 
-  }
+  let bioinput = (e) => {
+    let data = e.target.value;
+    if (data.length <= 200) {
+      setbio(e.target.value);
+    } else {
+      seterror("enter correct format");
+    }
+  };
 
+  let emailinput = (e) => {
+    let data = e.target.value;
+    setimail(e.target.value);
+  };
+
+  let handeldsubmituser = () => {
+    console.log(name.length)
+    if ((name.length>0, email, bio)) {
+      if (email.includes("@" && ".com")) {
+        seterror("");
+        dispatch(AddnewUser({name, email, bio}));
+      } else {
+        seterror("Enter right Email");
+      }
+    } else {
+      seterror("Please Enter all the fields");
+    }
+  };
 
   return (
     <div>
@@ -18,9 +54,18 @@ const handelduserinputs=()=>{
         <h2 class="text-gray-500 text-4xl mb-1 font-medium title-font text-center">
           Add User
         </h2>
-        <form onSubmit={submituserdata}>
-        <div class="relative mb-4">
-          <label for="name" class="leading-7 text-sm text-gray-600">
+        {error && error ? (
+          <div
+            class="bg-red-100 border border-red-400 text-red-700 px-2 py-1 rounded absolute"
+            role="alert"
+          >
+            <span class="block sm:inline">{error}</span>
+          </div>
+        ) : (
+          ""
+        )}
+        <div class="relative">
+          <label for="name" class="leading-7 text-sm text-gray-600 mt-14">
             Name
           </label>
           <input
@@ -28,9 +73,11 @@ const handelduserinputs=()=>{
             id="name"
             name="name"
             required
-            onChange={handelduserinputs}
+            value={name}
+            onChange={(e) => nameinput(e)}
             class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
+          <p className="text-right">{name.length}/50</p>
         </div>
         <div class="relative mb-4">
           <label for="email" class="leading-7 text-sm text-gray-600">
@@ -41,7 +88,7 @@ const handelduserinputs=()=>{
             id="email"
             name="email"
             required
-            onChange={handelduserinputs}
+            onChange={(e) => emailinput(e)}
             class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
         </div>
@@ -53,20 +100,23 @@ const handelduserinputs=()=>{
             id="message"
             name="message"
             required
-            onChange={handelduserinputs}
-            placeholder="Contetnt should between  0-200 words "
+            value={bio}
+            onChange={(e) => bioinput(e)}
+            placeholder="Contetnt should between  0-200 Charector "
             class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-          >gg</textarea>
+          >
+            gg
+          </textarea>
+          <p className="text-right">{bio.length}/200</p>
         </div>
-        <button type="submit" class="text-white bg-indigo-500 border-0 py-2  w-full m-auto  focus:outline-none hover:bg-indigo-600 rounded text-lg">
-          Button
+        <button
+          onClick={handeldsubmituser}
+          class="text-white bg-indigo-500 border-0 py-2  w-full m-auto  focus:outline-none hover:bg-indigo-600 rounded text-lg"
+        >
+     {    loading? "Loading" : "Add"}
         </button>
 
-        </form>
-        <p class="text-xs text-gray-500 mt-3">
-          Chicharrones blog helvetica normcore iceland tousled brook viral
-          artisan.
-        </p>
+        {/* </form> */}
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ const AddPost = () => {
           
               class="w-full bg-gray-100     mt-14 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
             ></textarea>
+         <h1 className="text-right">0/300</h1>
           </div>
         </div>
 
