@@ -17,7 +17,7 @@ const ActiveUser = () => {
 
   return (
     <div>
-       <h1 className="text-center text-gray-500 text-lg p-4  font-medium title-font cursor-pointer text-center">Top Active Users</h1> 
+       <h1 className="text-center text-indigo-600 text-lg p-4  font-medium title-font cursor-pointer text-center">Top Active Users</h1> 
       {data?.map((el,index) => (
         <div class="py-1 sm:w-full w-full m-2 bg-gray-100 pl-14 pr-14">
      

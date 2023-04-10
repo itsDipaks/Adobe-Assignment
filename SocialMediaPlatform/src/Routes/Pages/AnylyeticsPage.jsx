@@ -32,15 +32,14 @@ const AnylyeticsPage = () => {
         </h2>
       </div>
 
-      {selectedSection ? "User" : "post"}
 
       {selectedSection ? (
-        <div className="flex justify-evelny w-11/12 ">
+        <div className="flex justify-between w-11/12 ">
           <UserAnaylytics />
           <ActiveUser />
         </div>
       ) : (
-        <div className="flex justify-evelny w-11/12 ">
+        <div className=" justify-between w-11/12 ">
         <PostCount />
         <MostLikedPost />
       </div>
