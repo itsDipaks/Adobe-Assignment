@@ -36,12 +36,12 @@ $ npm run dev
 ### 😊 Dipak Pawar
 
 ## Here Are Some Glims 
-<img align="left" width="700px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/postHome.png?raw=true" alt="3d img"/>
+<img align="left" width="50px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/postHome.png?raw=true" alt="3d img"/>
 <img align="right" width="200px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/PostLikesMob.jpg?raw=true"/>
 
 
 <img align="left" width="200px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/UserAnaMob.jpg?raw=true"/>
-<img align="right" width="700px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/postAnalyatics.png?raw=true" alt="3d img"/>
+<img align="right" width="500px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/postAnalyatics.png?raw=true" alt="3d img"/>
 
 
 
