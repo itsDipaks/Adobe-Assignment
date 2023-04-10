@@ -13,7 +13,7 @@ const PostCount = () => {
   let {PostData} = useSelector((store) => store.post);
 console.log(PostData)
   return (
-    <div className="p-4  w-96 m-auto text-center">
+    <div className="p-4  w-96 xs:w-full m-auto text-center">
        <h1 className="text-center text-indigo-600 text-lg p-4  font-medium title-font cursor-pointer text-center">Total Number Of Post</h1> 
       <div className="border-2 border-gray-200 m-auto w-full py-6 rounded-lg">
         <svg

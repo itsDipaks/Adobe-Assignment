@@ -1,9 +1,9 @@
 const express = require("express");
 const cors =require("cors");
-const { UsersRouter } = require("./src/Routes/User.Routes");
-const { PostRouter } = require("./src/Routes/Post.Routes");
-const { AnalyticsRouter } = require("./src/Routes/Analytics.Routes");
-const { Connection } = require("./src/config/db");
+const { UsersRouter } = require("./Routes/User.Routes");
+const { PostRouter } = require("./Routes/Post.Routes");
+const { AnalyticsRouter } = require("./Routes/Analytics.Routes");
+const { Connection } = require("./config/db");
 
 const app = express();
 app.use(cors())

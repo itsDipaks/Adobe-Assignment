@@ -13,16 +13,15 @@ const Navbar = () => {
   return (
     <>
       <header className="text-gray-600 body-font border-b-2">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div className=" mx-auto flex flex-wrap p-5 flex-col md:flex-row sm:flex-row xs:flex-row items-center">
           <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <GiWrappingStar style={{width: "50px", height: "50px"}} />
             <span className="ml-3 text-xl">Social Media</span>
           </a>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            {Routes.map((el) => (
+            {Routes.map((el,index) => (
               <Link to={el.Link}>
-                {" "}
-                <h3 className="mr-14">{el.Name} </h3>
+                <h3 key={index} className="mr-8 py-1 xs:mr-2  rounded px-2 m-1 xs:text-xs  bg-indigo-400 hover:bg-indigo-700 text-white">{el.Name} </h3>
               </Link>
             ))}
           </nav>

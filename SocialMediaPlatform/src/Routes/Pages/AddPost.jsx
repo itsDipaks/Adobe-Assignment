@@ -33,8 +33,8 @@ const AddPost = () => {
 
   return (
     <>
-      <section class="text-gray-600 body-font relative w-1/2 m-auto mt-14 ">
-        <h2 class="text-gray-500 text-4xl mb-1 font-medium title-font text-center">
+      <section class="text-gray-600 body-font relative sm:w-4/5 xs:w-4/5 w-1/2 m-auto xs:mt-8 mt-14 ">
+        <h2 class="text-gray-500 text-4xl xs:text-2xl  mb-1 font-medium title-font text-center">
           Add New Post
         </h2>
 
@@ -55,7 +55,7 @@ const AddPost = () => {
               name="message"
               value={postdata}
               onChange={(e) => handeldpostinput(e)}
-              class="w-full bg-gray-100     mt-14 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+              class="w-full bg-gray-100 xs:mt-4    mt-14 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
             ></textarea>
             <h1 className="text-right">{postdata.length}/300</h1>
           </div>

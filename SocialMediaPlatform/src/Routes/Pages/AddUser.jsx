@@ -68,7 +68,7 @@ const AddUser = () => {
   return (
     <div>
       <div class="lg:w-1/3 md:w-1/2 sm:w-4/5 xs:w-4/5 bg-white flex flex-col md:ml-auto w-full m-auto md:py-8 mt-8 md:mt-0">
-        <h2 class="text-gray-500 text-4xl mb-1 font-medium title-font text-center">
+        <h2 class="text-gray-500 text-4xl xs:text-2xl mb-1 font-medium title-font text-center">
           Add User
         </h2>
         {error && error ? (

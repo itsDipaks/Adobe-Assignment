@@ -14,8 +14,8 @@ const AnylyeticsPage = () => {
           onClick={() => setselectedSection(true)}
           className={
             !selectedSection
-              ? "text-gray-500 text-xl p-4  font-medium title-font cursor-pointer text-center"
-              : "text-black text-xl  font-medium title-font cursor-pointer  p-4  bg-gray-200  text-center"
+              ? "text-gray-500 text-xl p-4  xs:text-sm font-medium title-font cursor-pointer text-center"
+              : "text-black text-xl  xs:text-sm   font-medium title-font cursor-pointer  p-4 xs:p-2  bg-gray-200  text-center"
           }
         >
           User Anylyetics
@@ -24,8 +24,8 @@ const AnylyeticsPage = () => {
           onClick={() => setselectedSection(false)}
           className={
             selectedSection
-              ? "text-gray-500 text-xl  font-medium title-font cursor-pointer p-4  text-center"
-              : "text-black  text-xl  font-medium title-font cursor-pointer  bg-gray-200  p-4  text-center"
+              ? "text-gray-500 text-xl  xs:text-sm   font-medium title-font cursor-pointer p-4  text-center"
+              : "text-black  text-xl  xs:text-sm   font-medium title-font cursor-pointer  bg-gray-200  p-4  text-center"
           }
         >
           Post Anylyetics
@@ -34,7 +34,7 @@ const AnylyeticsPage = () => {
 
 
       {selectedSection ? (
-        <div className="flex justify-between w-11/12 ">
+        <div className="flex justify-between w-11/12 xs:flex-col ">
           <UserAnaylytics />
           <ActiveUser />
         </div>
