@@ -1,1 +1,1 @@
-export let Backendurl =" http://localhost:8500"
+export let Backendurl =" https://worrisome-cuff-links-crow.cyclic.app/"

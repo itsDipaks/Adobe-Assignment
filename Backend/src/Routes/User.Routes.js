@@ -1,16 +1,15 @@
 let {Router} = require("express");
-const { UserModel } = require("../model/User.model");
+const {UserModel} = require("../model/User.model");
 const UsersRouter = Router();
 
+// ========== Add New User ==========
 UsersRouter.post("/", async (req, res) => {
   let {email} = req.body;
   let isexist = await UserModel.findOne({email});
   if (isexist) {
-    res
-      .status(400)
-      .send({
-        msg: "User Already Exist With this Email Plase Use Differant Email !!",
-      });
+    res.status(400).send({
+      msg: "User Already Exist With this Email Plase Use Differant Email !!",
+    });
   } else {
     const {name, email, bio} = req.body;
 
@@ -36,9 +35,9 @@ UsersRouter.post("/", async (req, res) => {
   }
 });
 
+// ========== Get All Users ==========
 
-
-UsersRouter.get("/", async(req, res) => {
+UsersRouter.get("/", async (req, res) => {
   try {
     const User = await UserModel.find();
     res.status(200).send({msg: "User Data", data: User});
@@ -47,18 +46,19 @@ UsersRouter.get("/", async(req, res) => {
   }
 });
 
+// ========== Get Selected User ==========
 
-
-UsersRouter.get("/:id", async(req, res) => {
+UsersRouter.get("/:id", async (req, res) => {
   let {id} = req.params;
-  console.log(params)
   try {
-    const User =await UserModel.findById({_id: id});
+    const User = await UserModel.findById({_id: id});
     res.status(200).send({msg: "User Data", User: User});
   } catch (err) {
     res.status(400).send({msg: "Error Users Not Found"});
   }
 });
+
+// ========== Update User ==========
 
 UsersRouter.put("/:id", (req, res) => {
   let {id} = req.params;
@@ -73,17 +73,16 @@ UsersRouter.put("/:id", (req, res) => {
   }
 });
 
-UsersRouter.delete("/:id", async(req, res) => {
+// ========== Delete User ==========
+
+UsersRouter.delete("/:id", async (req, res) => {
   let {id} = req.params;
-  console.log(id)
   try {
-    const DeletedUser = await UserModel.findByIdAndDelete({_id:id});
+    const DeletedUser = await UserModel.findByIdAndDelete({_id: id});
     res.status(200).send({msg: "Post Deleted", DeletedUser: DeletedUser});
   } catch (err) {
     res.status(400).send({msg: "Error User Not Found", Err: err});
   }
 });
-
-
 
 module.exports = {UsersRouter};
