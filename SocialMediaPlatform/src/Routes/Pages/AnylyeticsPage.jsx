@@ -18,7 +18,7 @@ const AnylyeticsPage = () => {
               : "text-black text-xl  xs:text-sm   font-medium title-font cursor-pointer  p-4 xs:p-2  bg-gray-200  text-center"
           }
         >
-          User Anylyetics
+          User Analytics
         </h2>
         <h2
           onClick={() => setselectedSection(false)}
@@ -28,7 +28,7 @@ const AnylyeticsPage = () => {
               : "text-black  text-xl  xs:text-sm   font-medium title-font cursor-pointer  bg-gray-200  p-4  text-center"
           }
         >
-          Post Anylyetics
+          Post Analytics
         </h2>
       </div>
 

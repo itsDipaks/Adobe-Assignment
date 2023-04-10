@@ -17,11 +17,10 @@ export const PostReducer = (state = initialstate, {type, payload}) => {
       };
     }
     case POST_GET_SUCESS: {
-      // console.log(payload)
       return {
         ...state,
-        loading: false,
-        PostData:payload.Postdata
+        PostData:payload.Postdata,
+        loading: false
       };
     }
     case POST_GET_ERROR: {
