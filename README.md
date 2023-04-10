@@ -36,7 +36,7 @@ $ npm run dev
 ### 😊 Dipak Pawar
 
 ## Here Are Some Glims 
-<img align="left" width="50px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/postHome.png?raw=true" alt="3d img"/>
+<img align="left" width="500px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/postHome.png?raw=true" alt="3d img"/>
 <img align="right" width="200px"  src="https://github.com/itsDipaks/Projects-Static-File/blob/master/AdobeSocialMedia/PostLikesMob.jpg?raw=true"/>
 
 
